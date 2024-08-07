@@ -3,6 +3,7 @@ import { ref } from "vue";
 import NavItem from "@/components/NavItem.vue";
 import ShopDrop from "@/components/ShopDrop.vue";
 import NavIcon from "@/components/NavIcon.vue";
+import MainContext from '@/components/MainContext.vue'
 
 const imageBg=ref("url(/toa-large.jpg) center/100% auto no-repeat")
 const scrollOneColor = ref("hsl(0, 0%, 100%)");
@@ -71,7 +72,16 @@ header{
   flex-direction:row;
   justify-content:space-between;
   background-color: hsla(0, 0%, 8%, 0.747);
+  font-family: "Roboto Condensed", sans-serif;
   padding:1vh 5vw;
+}
+main{
+  width:100%;
+  height:900px;
+  display:flex;
+  place-items: center;
+  padding: 1vh 5vw;
+  color:hsl(0, 0%, 0%);
 }
 .logo-ctn{
   width:4vw;
@@ -157,7 +167,9 @@ header{
         <NavIcon />
       </div>
     </header>
-    <main></main>
+    <main>
+      <MainContext/>
+    </main>
     <div class="scroll-level">
       <div class="scroll-level-main">
         <div class="one" :style="{ backgroundColor: scrollOneColor }"></div>

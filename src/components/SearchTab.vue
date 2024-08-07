@@ -1,5 +1,6 @@
 <style scoped>
 .ctn{
+    font-family: "Roboto Condensed", sans-serif;
     width: 90%;
     height:100%;
     display:space-between;
@@ -24,6 +25,12 @@
     font-size:12px;
     text-transform: uppercase;
     letter-spacing:4px;
+}
+.ctn button:hover{
+    transition: all .4s ease-in-out;
+    cursor:pointer;
+    background-color: rgba(0,0,0,0.5);
+    transform:scaleX(0.94);
 }
 </style>
 
