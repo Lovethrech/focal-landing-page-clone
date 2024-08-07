@@ -2,11 +2,34 @@
 import { ref } from "vue";
 import NavItem from "@/components/NavItem.vue";
 import ShopDrop from "@/components/ShopDrop.vue";
+import NavIcon from "@/components/NavIcon.vue";
 
 const imageBg=ref("url(/toa-large.jpg) center/100% auto no-repeat")
 const scrollOneColor = ref("hsl(0, 0%, 100%)");
 const scrollTwoColor = ref("transparent");
 const scrollThreeColor = ref("transparent");
+
+const windowWidth = ref(window.innerWidth);
+const styles = ref({
+  transform: 'scaleY(4)'
+});
+
+function updateStyles() {
+  if (windowWidth.value < 760) {
+    styles.value = {
+      transform: 'scaleY(2)'
+    }
+  }
+  else {
+    styles.value = {
+      transform:'scaleY(4)'
+    }
+  }
+}
+window.addEventListener('resize', () => {
+  windowWidth.value = window.innerWidth;
+  updateStyles()
+})
 
 let attributeIndex = 0;
 const attributes = [
@@ -23,10 +46,12 @@ setInterval(() => {
   scrollThreeColor.value = currentAttribute.scrollThreeColor;
 
   if (scrollTwoColor.value == "hsl(0, 0%, 100%)") {
-    imageBg.value = "url(/clark-large.jpg) center/100% auto no-repeat";
+    imageBg.value = "url(/charles-large.jpg) center/100% auto no-repeat";
+    updateStyles();
   }
   else if (scrollThreeColor.value == "hsl(0, 0%, 100%)") {
-    imageBg.value = "url(/blake-large.jpg) center/100% auto no-repeat";
+    imageBg.value = "url(/psk-large.jpg) center/100% auto no-repeat";
+    updateStyles()
   }
   else{
     imageBg.value = "url(/toa-large.jpg) center/100% auto no-repeat";
@@ -64,6 +89,15 @@ header{
   margin: auto 0;
 }
 
+.nav-icon{
+  margin: auto 0;
+  display:flex;
+}
+@media screen and (max-width: 850px){
+  header{
+    padding: 1vh 0 1vh 5vw;
+  }
+}
 @media screen and (max-width:750px){
   .logo-ctn {
     width: 40px;
@@ -79,8 +113,6 @@ header{
     display:block;
   }
 }
-
-
 .scroll-level{
   position:absolute;
   bottom:0;
@@ -114,24 +146,23 @@ header{
         </div>
       </div>
 
-      <div class="shop-drop">
-        <ShopDrop />
-      </div>
-
       <div class="nav-item">
         <NavItem />
       </div>
 
       <div class="nav-icon">
-
+        <div class="shop-drop">
+          <ShopDrop />
+        </div>
+        <NavIcon />
       </div>
     </header>
     <main></main>
     <div class="scroll-level">
       <div class="scroll-level-main">
         <div class="one" :style="{ backgroundColor: scrollOneColor }"></div>
-        <div class="two" :style="{ backgroundColor: scrollTwoColor }"></div>
-        <div class="three" :style="{ backgroundColor: scrollThreeColor }"></div>
+        <div class="two" :style="{ backgroundColor: scrollTwoColor, styles }"></div>
+        <div class="three" :style="{ backgroundColor: scrollThreeColor, styles }"></div>
       </div>
     </div>
   </div>

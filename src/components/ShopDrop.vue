@@ -1,5 +1,17 @@
 <script setup>
+import { ref } from "vue";
 import shopDrops from "@/data/shop-drops.json";
+
+const shiftShopPositionStyle = ref({
+    position: "absolute",
+    top: '2vh'
+})
+const shiftShopPosition = () => {
+    shiftShopPositionStyle.value = ({
+        position: "relative",
+        top: "0"
+    })
+}
 </script>
 
 <style scoped>
@@ -11,14 +23,16 @@ import shopDrops from "@/data/shop-drops.json";
     gap:0.5vw;
 }
 .shop-ctn p{
-    position:fixed;
-    top:2vh;
-    left:48vw;
     margin:auto 0;
-    margin-right:-6.6vw;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+}
+.shop-ctn p sub{
+    font-size: 1px;
 }
 select{
     background-color:rgba(0, 0, 0, 0);
+    color:hsl(0, 0%, 100%);
     border-radius:0;
     border: 2px solid hsl(0, 0%, 100%);
     padding:6px 0;
@@ -33,12 +47,13 @@ option{
 
 <template>
     <div class="shop-ctn">
-        <p>Shop</p>
-        <select>
+        <p :style="{ position:shiftShopPositionStyle.position, top:shiftShopPositionStyle.top }"><sub>tm</sub>shop</p>
+        <select @click="shiftShopPosition">
             <option 
                 v-for="shopDrop in shopDrops"  
                 :key="shopDrop.id" 
-                :value="shopDrop.id">
+                :value="shopDrop.id"
+                >
                     {{ shopDrop.name }}
             </option>
         </select>
