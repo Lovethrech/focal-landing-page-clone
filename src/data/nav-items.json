@@ -1,0 +1,18 @@
+[
+    {
+        "id": "1",
+        "item": "Shop by Category"
+    },
+    {
+        "id": "2",
+        "item": "Shop by Device"
+    },
+    {
+        "id": "3",
+        "item": "Collections"
+    },
+    {
+        "id": "4",
+        "item": "Blog"
+    }
+]
