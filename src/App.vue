@@ -3,11 +3,14 @@
 </script>
 
 <template>
-  <header>
-  </header>
-
-  <main>
-  </main>
+  <div class="bg-img">
+    
+  </div>
+  <div class="app-content">
+    <header></header>
+    <main></main>
+  </div>
+  
 </template>
 
 <style scoped>
