@@ -1,11 +1,11 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref } from "vue";
 import SearchTab from "@/components/SearchTab.vue";
 
+const searchIcon = ref("<i class='bx bx-search-alt-2'></i>");
+const showSearch = ref("none");
 const openMailMessage = ref("You have no mail currently.");
 const displayMailMessage = ref("none");
-const timeout = ref(null);
-
 const openMail = () => {
     if (displayMailMessage.value === "none") {
         displayMailMessage.value = "flex";
@@ -14,11 +14,21 @@ const openMail = () => {
         displayMailMessage.value = "none";
     }, 3000);
 }
+const search = () => {
+    if (searchIcon.value == "<i class='bx bx-search-alt-2'></i>") {
+        searchIcon.value = "<i class='bx bx-search-alt'></i>";
+        showSearch.value = "flex";
+    }
+    else{
+        searchIcon.value = "<i class='bx bx-search-alt-2'></i>";
+        showSearch.value = "none";
+    }
+}
 </script>
 
 
 <style scoped>
-.mail-ctn i:hover{
+.mail-ctn i:hover, .search-icon:hover{
     cursor: pointer;
 }
 .mail{
@@ -29,6 +39,17 @@ const openMail = () => {
     color: hsla(0, 10%, 20%, 0.815);
     padding:4px 6px;
     border-radius: 10px 0 0 10px;
+}
+.main-search{
+    position: absolute;
+    top:100px;
+    left:0;
+    right:0;
+    width:100%;
+    height:40px;
+    display: flex;
+    place-items: center;
+    justify-content: center;
 }
 .shop-bag {
     display: flex;
@@ -62,8 +83,8 @@ const openMail = () => {
         </div>
     </div>
     <div class="search">
-        <i class='bx bx-search-alt-2'></i>   
-        <div class="search">
+        <div class="search-icon" v-html="searchIcon" @click="search"></div>
+        <div class="main-search" :style="{ display: showSearch }">
             <SearchTab/>
         </div>
     </div>
