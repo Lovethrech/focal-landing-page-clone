@@ -72,6 +72,10 @@ const search = () => {
         top: 210px;
         right: 0.2vw;
     }
+    .mail{
+        top:3vh;
+        right:6vw;
+    }
 }
 </style>
 
@@ -82,14 +86,19 @@ const search = () => {
             <p>{{ openMailMessage }}</p>
         </div>
     </div>
+    <br/>
     <div class="search">
         <div class="search-icon" v-html="searchIcon" @click="search"></div>
         <div class="main-search" :style="{ display: showSearch }">
             <SearchTab/>
         </div>
     </div>
+    <br/>
+    <div class="user">
+        <i class='bx bx-user'></i>   
+    </div>
     
-    <i class='bx bx-user'></i>
+    <br/>
     <div class="div">
         <div class="shop-bag">
             <i class='bx bxs-shopping-bags'></i>

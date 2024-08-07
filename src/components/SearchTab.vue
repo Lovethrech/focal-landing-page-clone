@@ -32,6 +32,18 @@
     background-color: rgba(0,0,0,0.5);
     transform:scaleX(0.94);
 }
+@media screen and (max-width:850px){
+    .ctn{
+        width:80%;
+    }
+    .input-search{
+        width:80%;
+    }
+    .ctn button{
+        width:20%;
+        font-size: 1.8vw;
+    }
+}
 </style>
 
 <template>

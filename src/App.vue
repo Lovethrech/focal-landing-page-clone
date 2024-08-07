@@ -77,7 +77,7 @@ header{
 }
 main{
   width:100%;
-  height:900px;
+  height:80vh;
   display:flex;
   place-items: center;
   padding: 1vh 5vw;
@@ -121,6 +121,12 @@ main{
   }
   .shop-drop{
     display:block;
+  }
+}
+@media screen and (max-width:550px){
+  main{
+    height:70vh;
+    justify-content: center;
   }
 }
 .scroll-level{

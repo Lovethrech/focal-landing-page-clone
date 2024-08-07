@@ -53,16 +53,20 @@ const showIcons = () => {
     transform: scaleX(1.3);
 }
 .menu-list-ctn{
-    height:200px;
+    width:1000px;
+    height: 200px;
     position: absolute;
     top:60px;
-    right:0;
+    left:0;
+    display:flex;
+    justify-content: end;
+}
+.menu-list{
+    height:100%;
     padding:30px 6px;
     background-color: black;
     color:hsl(0, 0%, 100%);
     flex-direction:column;
-    justify-content: space-between;
-    gap:0.7vw;
     font-size: 16px;
     border-radius:0 0 0 20px;
 }
@@ -72,6 +76,9 @@ const showIcons = () => {
     }
     .mobile-menu{
         display:flex;
+    }
+    .menu-list-ctn{
+        width:100%;
     }
 }
 </style>
@@ -84,7 +91,9 @@ const showIcons = () => {
         <div class="mobile-menu">
             <div class="menu-icon-ctn" v-html="menuIcon" @click="showIcons"></div>
             <div class="menu-list-ctn" :style="{ display:menuListDisplay}">
-                <IconMenu/>
+                <div class="menu-list">
+                    <IconMenu/>  
+                </div>
             </div>
         </div>
     </div>
