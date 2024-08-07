@@ -1,4 +1,35 @@
+<script setup>
+import { ref, onMounted, onUnmounted } from "vue";
+import SearchTab from "@/components/SearchTab.vue";
+
+const openMailMessage = ref("You have no mail currently.");
+const displayMailMessage = ref("none");
+const timeout = ref(null);
+
+const openMail = () => {
+    if (displayMailMessage.value === "none") {
+        displayMailMessage.value = "flex";
+    }
+    setInterval(() => {
+        displayMailMessage.value = "none";
+    }, 3000);
+}
+</script>
+
+
 <style scoped>
+.mail-ctn i:hover{
+    cursor: pointer;
+}
+.mail{
+    position:absolute;
+    top:6vh;
+    right:1vw;
+    background-color:hsl(0, 0%, 100%);
+    color: hsla(0, 10%, 20%, 0.815);
+    padding:4px 6px;
+    border-radius: 10px 0 0 10px;
+}
 .shop-bag {
     display: flex;
 }
@@ -17,15 +48,26 @@
 @media screen and (max-width:850px) {
     .shop-no {
         position: fixed;
-        top: 21vh;
+        top: 210px;
         right: 0.2vw;
     }
 }
 </style>
 
 <template>
-    <i class='bx bx-envelope'></i>
-    <i class='bx bx-search-alt-2'></i>
+    <div class="mail-ctn">
+        <i class='bx bx-envelope' @click="openMail"></i>
+        <div class="mail" :style="{ display: displayMailMessage }">
+            <p>{{ openMailMessage }}</p>
+        </div>
+    </div>
+    <div class="search">
+        <i class='bx bx-search-alt-2'></i>   
+        <div class="search">
+            <SearchTab/>
+        </div>
+    </div>
+    
     <i class='bx bx-user'></i>
     <div class="div">
         <div class="shop-bag">

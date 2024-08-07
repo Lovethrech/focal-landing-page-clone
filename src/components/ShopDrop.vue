@@ -4,12 +4,12 @@ import shopDrops from "@/data/shop-drops.json";
 
 const shiftShopPositionStyle = ref({
     position: "absolute",
-    top: '2vh'
+    top: '20px'
 })
 const shiftShopPosition = () => {
     shiftShopPositionStyle.value = ({
         position: "relative",
-        top: "0"
+        top: "8px"
     })
 }
 </script>
@@ -22,8 +22,10 @@ const shiftShopPosition = () => {
     flex-direction: row;
     gap:0.5vw;
 }
+.shop-ctn:hover, select:hover{
+    cursor:pointer;
+}
 .shop-ctn p{
-    margin:auto 0;
     text-transform: uppercase;
     letter-spacing: 6px;
 }

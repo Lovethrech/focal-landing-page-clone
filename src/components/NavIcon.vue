@@ -47,10 +47,15 @@ const showIcons = () => {
     place-items:center;
     justify-content: center;
 }
+.menu-icon-ctn:hover{
+    transition: all .4s;
+    cursor: pointer;
+    transform: scaleX(1.3);
+}
 .menu-list-ctn{
     height:200px;
     position: absolute;
-    top:6vh;
+    top:60px;
     right:0;
     padding:30px 6px;
     background-color: black;
